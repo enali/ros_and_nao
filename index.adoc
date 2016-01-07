@@ -1,0 +1,8 @@
+= project title
+
+author ( @nickle ) <email@example.com>
+
+:imagesdir: images
+:source-highlighter: highlighterjs
+
+include::sections/example.adoc[]
