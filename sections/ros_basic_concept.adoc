@@ -1,0 +1,140 @@
+== 核心概念
+
+----
+- 节点(node)
+- 主题(topic)
+- 消息(message)
+- 服务(service)和客户端(client)
+- 发布器(publisher)和订阅器(subscriber)
+- 参数(parameter)
+----
+
+=== !
+
+----
+就淘宝来讲,店家和客户都是人,可以理解成节点,都有各自的任务
+
+你要买东西,跟店家聊天,店家提供的是服务,你用或不用都在
+
+你问店家衣服有某尺寸吗,店家不回话,你就得等着,这是同步
+
+你加入了几个群,每个群都是一个主题,主题里总有消息,你看或不看都在
+
+群里人分享购物经验,也有发广告的,并不需要等人回复,这是异步
+
+你说的话听的话就是消息,它表达你的意思,有一定格式
+----
+
+=== 节点 node
+
+----
+节点就是程序,可以用来执行,以生成进程.
+
+节点与节点可以通信,通信的内容就是消息
+
+每个节点都有自己的发布器,订阅器,可以提供服务
+----
+
+=== !
+
+.rosnode
+[source, console]
+----
+rosnode list # 列出当前运行的节点
+rosnode info node_name # 显示节点的具体信息
+----
+
+=== 主题 topic
+
+----
+每个节点都可以将消息发布到一个主题
+
+每个节点都可以订阅别的节点发布的主题
+
+每个主题的数据都有类型,或者说是格式
+
+每个类型的本质都基本数据的组合
+----
+
+=== !
+
+.rostopic
+[source, console]
+----
+rostopic list # 列出当前激活的主题
+rostopic type topic_name # 显示主题的消息类型
+rostopic pub topic_name msg_type # 发布数据到主题
+rostopic echo topic_name # 打印主题的数据
+----
+
+=== 消息 message
+
+----
+消息是节点间或者说进程间传递的具有一定格式的信息
+
+消息有类型,有aaa/bbb的格式,其中aaa是软件包的名字,bbb是其中msg文件的名字
+----
+
+=== !
+
+.rosmsg
+[source, console]
+----
+rosmsg list # 列出所有消息
+rosmsg show msg_type # 显示指定消息类型的信息
+----
+
+=== 服务和客户端
+
+----
+server/client是一种应用广泛的通信方式.
+
+client发出请求,server收到请求后处理,再将处理后的数据返回client
+
+server可以接收很多不同client发来的请求
+
+点对多
+
+服务与客户的通信也是消息,消息的类型是基本数据的组合
+----
+
+=== !
+
+.rservice
+[source,console]
+----
+rservice list # 列出当前系统提供的服务
+rservice serv_name args # 以指定参数调用服务
+rservice type serv_name # 打印服务类型
+----
+
+.rossrv
+[source,console]
+----
+rossrv list # 列出所有服务
+rossrv show srv_type # 打印服务类型的描述
+----
+
+=== 发布器和订阅器
+
+----
+发布器可以向一个主题发布消息,若主题不存在则创建主题
+
+订阅器可以向一个主题订阅消息
+
+多对多
+----
+
+=== 参数
+
+参数服务器可以存储数据,包括整数,浮点数,布尔值,字典,和列表
+
+=== !
+
+.rosparam
+[source,console]
+----
+rosparam set param value # 设置参数值
+rosparam get param # 获取参数值
+----
+

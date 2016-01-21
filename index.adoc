@@ -1,8 +1,14 @@
-= project title
+= 关于ROS和NAO
 
-author ( @nickle ) <email@example.com>
+李振平 ( @lizhenping) <lizhenping@artrobot.com>
 
 :imagesdir: images
-:source-highlighter: highlighterjs
+:source-highlighter: highlightjs
+:sectids!:
 
-include::sections/example.adoc[]
+include::sections/ros_basic.adoc[]
+include::sections/ros_basic_concept.adoc[]
+include::sections/ros_run.adoc[]
+include::sections/ros_urdf.adoc[]
+include::sections/nao_basic.adoc[]
+include::sections/ros_with_our_robot.adoc[]

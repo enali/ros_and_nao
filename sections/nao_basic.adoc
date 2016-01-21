@@ -1,0 +1,61 @@
+== ros
+
+----
+NAO是Aldebaran开发的商业人型机器人.
+
+运行在NAOQI OS系统上,一个基于Gentoo的发行版
+
+NAO拥有完整的开发工具和软件库.
+----
+
+=== ros和nao
+
+----
+通过安装ROS中相关NAO的包,可以通过ROS获取NAO数据并操作NAO.
+
+此驱动器是对NaoQI API必要部分的封装
+----
+
+=== nao的进程框架
+
+image::nao/naoqi_process.png[width=600]
+
+----
+naoqi是核心程序,其在启动时自动启动相关模块
+----
+
+=== nao的编程框架
+
+image::nao/naoqi_broker.png[width=600]
+
+----
+broker代理本broker和子broker的所有模块
+
+通过broker获取模块的对象,并调用相应方法
+----
+
+=== !
+
+.say hello
+[source, python]
+----
+from naoqi import ALProxy
+tts = ALProxy("ALTextToSpeech", nao_ip, 9559)
+tts.say("hello")
+----
+
+=== !
+
+.get data
+[source, python]
+----
+from naoqi import ALProxy
+memory = ALProxy("ALMemory", nao_ip, 9559)
+key = "Device/SubDeviceList/HeadYaw/Position/Sensor/Value"
+data = memory.getData(key)
+----
+
+=== nao的左手臂
+
+image::nao/nao_left_arm.png[width=600]
+

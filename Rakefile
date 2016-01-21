@@ -8,7 +8,7 @@ task :prepare do
 end
 
 desc "Build presentation"
-task :build => [:clean, :prepare] do
+task :build => [:prepare] do
   sh "bundle exec asciidoctor -T vendor/asciidoctor-reveal.js/templates/slim/ -D build index.adoc"
 end
 

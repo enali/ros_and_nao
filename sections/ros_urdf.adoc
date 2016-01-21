@@ -1,0 +1,98 @@
+== urdf
+
+----
+Unified Robot Description Format 
+
+统一机器人描述规范
+
+基于XML, 用于表示一个机器人模型
+
+理解基础的几个标签的概念: 
+- link
+- joint 
+- visual (外观)
+- collision (碰撞)
+- inertial (惯性)
+----
+
+=== !
+
+从抽象的角度看, 机器人的机械结构是一棵树
+
+----
+link可以理解成杆
+joint理解成杆与杆的连接点
+每个link有外观,实体,惯性
+每个joint有父link和子link
+一个机器人由杆和杆的连接组成
+父子关系最终构成树形结构
+----
+
+=== !
+
+image::ros/urdf_example.png[]
+
+=== !
+
+[source,xml]
+----
+<robot name="test_robot">
+  <link name="link1" />
+  <link name="link2" />
+  <link name="link3" />
+  <link name="link4" />
+  <joint name="joint1" type="continuous">... </joint>
+  <joint name="joint2" type="continuous">... </joint>
+  <joint name="joint3" type="continuous">... </joint>
+</robot>
+----
+
+=== !
+
+.link
+[source, xml]
+----
+<link name="base_link">
+  <visual>
+    <geometry>
+      <cylinder length="0.6" radius="0.2"/>
+    </geometry>
+    <material name="blue"/>
+  </visual>
+  <collision>
+    <geometry>
+      <cylinder length="0.6" radius="0.2"/>
+    </geometry>
+  </collision>
+  <inertial>
+    <mass value="10"/>
+    <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+  </inertial>
+</link>
+----
+
+=== !
+
+.joint
+[source, xml]
+----
+<joint name="right_front_wheel_joint" type="continuous">
+  <axis rpy="0 0 0" xyz="0 1 0"/>
+  <parent link="right_base"/>
+  <child link="right_front_wheel"/>
+  <origin rpy="0 0 0" xyz="0.133333333333 0 -0.085"/>
+</joint>
+----
+
+=== !
+
+----
+rviz和gazebo都能提供模型的视图
+
+gazebo使用sdf描述语言, 能提供更多的模拟,如碰撞检测,实时渲染等
+----
+
+=== !
+
+`xacro` 是宏,用于简化 `urdf` 文件的编写
+
