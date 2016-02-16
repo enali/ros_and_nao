@@ -2,6 +2,10 @@
 
 李振平 ( @lizhenping) <lizhenping@artrobot.com>
 
+----
+lizhenping/ros_and_nao_speech.git
+----
+
 :imagesdir: images
 :source-highlighter: highlightjs
 :sectids!:
@@ -12,3 +16,5 @@ include::sections/ros_run.adoc[]
 include::sections/ros_urdf.adoc[]
 include::sections/nao_basic.adoc[]
 include::sections/ros_with_our_robot.adoc[]
+include::sections/ros_moveit.adoc[]
+include::sections/question_and_answer.adoc[]

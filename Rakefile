@@ -5,6 +5,7 @@ task :prepare do
   mkdir_p "build/reveal.js"
   cp_r Dir["vendor/reveal.js/{css,js,lib,plugin}"], "build/reveal.js"
   cp_r "images", "build"
+  cp_r "files", "build"
 end
 
 desc "Build presentation"

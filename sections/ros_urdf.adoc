@@ -86,6 +86,46 @@ image::ros/urdf_example.png[]
 
 === !
 
+.rpy
+image::roll_yaw_pitch.png[]
+
+----
+描述空间转角的两种方式:
+1, rpy, 即绕X轴转角,绕Y轴转角,绕Z轴转角
+   问题: 万向节死锁
+2, 四元数. [x, y, z, w]
+----
+
+=== !
+
+image::flight_roll_pitch_yaw.png[width=500]
+
+=== !
+
+----
+不只是link构成了树, 每个link的坐标frame也构成了树.
+
+我们接收的数据都是针对本地坐标的数据
+
+我们定义好不同frame间的相对关系, ROS提供了tf库来方便处理运动
+----
+
+=== !
+
+.frame tree
+image::ros/frame_tree.png[]
+
+=== !
+
+.link tree
+image::ros/link_tree.png[]
+
+=== !
+
+link:files/example.urdf[one urdf file example]
+
+=== !
+
 ----
 rviz和gazebo都能提供模型的视图
 
